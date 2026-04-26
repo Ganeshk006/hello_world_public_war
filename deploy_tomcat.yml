@@ -14,10 +14,10 @@
 
   - name: download war file
     ansible.builtin.get_url:
-      url: https://hiqodenew.jfrog.io/artifactory/hiqode-tomcat-app-ma-generic-local/webapp-{{ build_number }}.war
+      url: https://trialrb4a71.jfrog.io/artifactory/War_deploy/test/webapp-{{ build_number }}.war
       dest: /home/ubuntu/sourcefile/webapp.war
-      username: siddeshg672@gmail.com
-      password: Siddesh@123456
+      username: ganesh.k@quadwave.com
+      password: Test@12345
 
   - name: create directory for backup
     file: 
@@ -27,17 +27,17 @@
 
   - name: backup file with owner and permissions
     copy:
-      src: /opt/tomcat/webapps/webappnew.war
-      dest: /home/ubuntu/backup/webappnew.war
+      src: /opt/tomcat/webapps/webapp.war
+      dest: /home/ubuntu/backup/webapp.war
       remote_src: yes
 
   - name: Delete remote war file
     file:
-      path: /opt/tomcat/webapps/webappnew.war
+      path: /opt/tomcat/webapps/webapp.war
       state: absent
 
   - name: deploy file with owner and permissions
     copy:
       src: /home/ubuntu/sourcefile/webapp.war
-      dest: /opt/tomcat/webapps/webappnew.war
+      dest: /opt/tomcat/webapps/webapp.war
       remote_src: yes
